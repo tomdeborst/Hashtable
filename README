@@ -1,0 +1,69 @@
+/**
+ * @author Thomas de Borst
+ * 1004302
+ */
+
+Experiments with hashCode() Override:
+
+All tests performed on resource file AU.csv for consistency.
+
+-First iteration of HashCode() override. Linear Probing.
+
+Loop through each character in the String provided(name value taken from CSV file)
+Add each char ASCII value, multiplied by the prime number 31 to the power of 2.
+
+Runtime was approximately 47ms with 183 collisions out of 500, 36.6%
+
+-----------------------------------------------------------------------------------------
+
+-Second iteration of HashCode() override. Linear Probing.
+
+Loop through each character in the String provided(name value taken from CSV file).
+Added count variable based on the number of characters in the name taken from the CSV.
+As we loop through, add each char ASCII value, multiplied by the prime number 31 to the
+power of the value of count. With each iteration of the loop decrease the count variable by 1.
+
+Runtime was approximately 74ms with 185 collisions out of 500, 37%.
+
+Increase in runtime and collisions...
+
+-----------------------------------------------------------------------------------------
+
+-Third iteration of HashCode() override. Linear Probing.
+
+Loop through each character in the String provided(name value taken from CSV file).
+Count variable is now initialised at 10 rather than being based on the number of characters
+in name.
+As before, we loop through, add each char ASCII value, multiplied by the prime number 31 to the
+power of the value of count. With each iteration of the loop decrease the count variable by 1.
+
+Runtime was approximately 46ms with 140 collisions out of 500, 28%.
+
+Faster at computing and with fewer collisions.
+
+-----------------------------------------------------------------------------------------
+
+-Fourth iteration of HashCode() override. Linear Probing.
+
+Same as previous, loop through each character in the String provided(name value taken from CSV file).
+Count variable is now initialised at the prime number 7 rather than 10.
+As before, we loop through, add each char ASCII value, multiplied by the prime number 31 to the
+power of the value of count. With each iteration of the loop decrease the count variable by 1.
+
+Runtime was approximately 49ms with 138 collisions out of 500, 27.6%.
+
+Slightly slower runtime than iteration 3. Fewer collisions however.
+Not sure if the payoff is worth it when scaled up.
+
+-----------------------------------------------------------------------------------------
+
+-Fourth iteration of HashCode() override. Quadratic Probing.
+
+Made an adjustment to iteration of 'i' variable after collision check. Rather than checking linearly for the next
+available empty slot in the hash table we will check Quadratically. i*i means we will check 1*1 then 2*2 then
+3*3 and so on.
+
+With this adjustment and the best iteration of the HasCode() override we are able to achieve only
+89 collisions(17.8%) with a runtime of 89ms.
+
+
